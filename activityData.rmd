@@ -1,3 +1,8 @@
+---
+output: 
+  html_document: 
+    keep_md: yes
+---
 #Reproducible Research Course Project 1
 Catherine Howell
 
@@ -14,10 +19,13 @@ sumSteps<-by(actData["steps"],actData["date"],sum,na.rm=T)
 hist(sumSteps,xlab="Total number of steps per day", breaks=10,main = "Histogram of Total Steps Per Day")
 ```
 
-3. Calculate mean and median number of steps per day.
+3a. Calculate mean number of steps per day.
 ```{r}
-meanSteps<-mean(sumSteps)
-medSteps <-median(sumSteps)
+mean(sumSteps)
+```
+3b. Calculate median number of steps per day.
+```{r}
+median(sumSteps)
 ```
 
 4. Calculate and plot the average number of steps per 5-minute interval

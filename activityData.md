@@ -18,11 +18,24 @@ hist(sumSteps,xlab="Total number of steps per day", breaks=10,main = "Histogram 
 
 ![](activityData_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
-3. Calculate mean and median number of steps per day.
+3a. Calculate mean number of steps per day.
 
 ```r
-meanSteps<-mean(sumSteps)
-medSteps <-median(sumSteps)
+mean(sumSteps)
+```
+
+```
+## [1] 9354.23
+```
+3b. Calculate median number of steps per day.
+
+```r
+median(sumSteps)
+```
+
+```
+## 2012-10-20 
+##      10395
 ```
 
 4. Calculate and plot the average number of steps per 5-minute interval
@@ -32,7 +45,7 @@ intSteps <-by(actData$steps,actData$interval,mean,na.rm=T)
 plot(names(intSteps),intSteps,type="l",xlab="Time interval",ylab="Average number of steps per interval", main="Average Steps Per 5-Minute Interval")
 ```
 
-![](activityData_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](activityData_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
 
 5. Find the 5 minute interval containing the maximum number of steps, on average.
 
@@ -69,7 +82,7 @@ sumImpSteps<-by(actData["impSteps"],actData["date"],sum,na.rm=T)
 hist(sumImpSteps,xlab="Total number of steps per day, imputed missing data", breaks=10, main="Histogram of Total Steps Per Day, with Imputed Data", sub="By Median Number of Steps By Interval")
 ```
 
-![](activityData_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](activityData_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
 
 8. Compare Average Number of steps per interval across weekdays and weekends.
 
@@ -89,4 +102,4 @@ meanSteps<-aggregate(actData$impSteps, by=c(actData["interval"],actData["dateTyp
 qplot(data=meanSteps,x=interval, y=x, facets=dateType ~ .,geom="line",ylab = "Mean Number of Steps", main="Average Steps per Interval, Weekend vs. Weekday")
 ```
 
-![](activityData_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](activityData_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
